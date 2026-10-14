@@ -3,11 +3,48 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Google Consent Mode v2 – domyślnie brak zgody; musi być przed gtag.js -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied',
+      analytics_storage: 'denied',
+      functionality_storage: 'granted',
+      security_storage: 'granted',
+      wait_for_update: 500
+    });
+    gtag('set', 'ads_data_redaction', true);
+    // przywrócenie wcześniej zapisanej decyzji (patrz js/consent.js)
+    try {
+      var c = JSON.parse(localStorage.getItem('j316_consent'));
+      if (c && c.v === 1 && Date.now() - c.ts < 365 * 864e5) {
+        gtag('consent', 'update', {
+          analytics_storage: c.analytics ? 'granted' : 'denied',
+          ad_storage: c.marketing ? 'granted' : 'denied',
+          ad_user_data: c.marketing ? 'granted' : 'denied',
+          ad_personalization: c.marketing ? 'granted' : 'denied'
+        });
+      }
+    } catch (e) {}
+  </script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RKP0FZEW2B"></script>
+  <script>
+    gtag('js', new Date());
+    gtag('config', 'G-RKP0FZEW2B');
+  </script>
+
   <title>Projekt J 3,16 – Kod, który odmieni polskie ulice</title>
   <meta name="description" content="Projekt J 3,16 – 4-etapowa kampania billboardowa o bezwarunkowej miłości Boga. Wesprzyj akcję i pomóż wypełnić polskie ulice Jego Miłością.">
   <meta property="og:title" content="Projekt J 3,16 – Kod, który odmieni polskie ulice">
   <meta property="og:description" content="4-etapowa kampania billboardowa o bezwarunkowej miłości Boga. Dołącz i wesprzyj akcję!">
-  <meta property="og:image" content="assets/img/hero.png">
+  <link rel="canonical" href="https://www.projektj316.com/">
+  <meta property="og:url" content="https://www.projektj316.com/">
+  <meta property="og:image" content="https://www.projektj316.com/assets/img/hero.png">
   <meta property="og:type" content="website">
   <meta name="theme-color" content="#000000">
   <link rel="icon" type="image/png" href="assets/img/favicon.png">
@@ -470,6 +507,7 @@
       <nav class="footer-nav" aria-label="Stopka">
         <a href="#wesprzyj">Wesprzyj</a>
         <a href="#regulamin">Regulamin darowizn</a>
+        <button type="button" class="link-btn" data-consent-open>Ustawienia cookies</button>
         <a href="#top">Do góry ↑</a>
       </nav>
     </div>
@@ -485,6 +523,46 @@
   <!-- Toast -->
   <div class="toast" role="status" aria-live="polite"></div>
 
+  <!-- Baner zgód (Consent Mode v2) -->
+  <div class="consent" role="dialog" aria-labelledby="consent-title" aria-describedby="consent-desc" hidden>
+    <div class="consent-inner">
+      <h2 class="consent-title" id="consent-title">Szanujemy Twoją prywatność</h2>
+      <p class="consent-desc" id="consent-desc">Używamy plików cookies i podobnych technologii. Niezbędne zapewniają działanie strony. Za Twoją zgodą użyjemy też narzędzi analitycznych Google Analytics, żeby zobaczyć, ile osób odwiedza stronę i co je interesuje. Zgodę możesz w każdej chwili zmienić w stopce strony („Ustawienia cookies”).</p>
+
+      <div class="consent-settings" id="consent-settings" hidden>
+        <div class="consent-option">
+          <div>
+            <p class="consent-option-title">Niezbędne</p>
+            <p class="consent-option-desc">Zapamiętanie Twojej decyzji dotyczącej cookies. Zawsze aktywne.</p>
+          </div>
+          <label class="switch"><input type="checkbox" checked disabled><span aria-hidden="true"></span><span class="sr-only">Niezbędne – zawsze aktywne</span></label>
+        </div>
+        <div class="consent-option">
+          <div>
+            <p class="consent-option-title">Analityczne</p>
+            <p class="consent-option-desc">Google Analytics – anonimowe statystyki odwiedzin, które pomagają ulepszać stronę.</p>
+          </div>
+          <label class="switch"><input type="checkbox" data-consent-key="analytics"><span aria-hidden="true"></span><span class="sr-only">Zgoda na cookies analityczne</span></label>
+        </div>
+        <div class="consent-option">
+          <div>
+            <p class="consent-option-title">Marketingowe</p>
+            <p class="consent-option-desc">Pomiar skuteczności i personalizacja reklam Google (np. przy promocji kampanii w sieci).</p>
+          </div>
+          <label class="switch"><input type="checkbox" data-consent-key="marketing"><span aria-hidden="true"></span><span class="sr-only">Zgoda na cookies marketingowe</span></label>
+        </div>
+      </div>
+
+      <div class="consent-actions">
+        <button type="button" class="btn btn-ghost btn-sm" data-consent-action="settings" aria-controls="consent-settings" aria-expanded="false">Ustawienia</button>
+        <button type="button" class="btn btn-ghost btn-sm" data-consent-action="save" hidden>Zapisz wybór</button>
+        <button type="button" class="btn btn-light btn-sm" data-consent-action="reject">Odrzucam</button>
+        <button type="button" class="btn btn-light btn-sm" data-consent-action="accept">Akceptuję wszystkie</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/consent.js" defer></script>
   <script src="js/main.js" defer></script>
 </body>
 </html>

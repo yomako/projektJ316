@@ -19,6 +19,12 @@
     return n.toLocaleString('pl-PL', { maximumFractionDigits: 0 }).replace(/ /g, ' ') + ' zł';
   };
 
+  /* ---------- Google Analytics – zdarzenia ---------- */
+  // gtag sam respektuje stan zgód (Consent Mode), więc można wołać zawsze
+  function track(name, params) {
+    if (typeof window.gtag === 'function') window.gtag('event', name, params || {});
+  }
+
   /* ---------- Toast ---------- */
   var toastEl = $('.toast');
   var toastTimer;
@@ -147,7 +153,10 @@
     }
 
     tabs.forEach(function (tab, i) {
-      tab.addEventListener('click', function () { showStep(i); });
+      tab.addEventListener('click', function () {
+        showStep(i);
+        track('campaign_step_view', { step: i + 1 });
+      });
       tab.addEventListener('keydown', function (e) {
         var map = { ArrowRight: current + 1, ArrowLeft: current - 1, Home: 0, End: tabs.length - 1 };
         if (e.key in map) {
@@ -183,6 +192,7 @@
         lbImg.src = btn.getAttribute('data-lightbox');
         lbImg.alt = img ? img.alt : '';
         lightbox.showModal();
+        track('campaign_image_zoom', { image: btn.getAttribute('data-lightbox') });
       });
     });
     $('.lightbox-close', lightbox).addEventListener('click', function () { lightbox.close(); });
@@ -233,7 +243,10 @@
 
   tiers.forEach(function (tier, i) {
     tier.tabIndex = i === 0 ? 0 : -1;
-    tier.addEventListener('click', function () { selectTier(tier); });
+    tier.addEventListener('click', function () {
+      selectTier(tier);
+      track('select_donation_amount', { value: selectedAmount, currency: 'PLN' });
+    });
     tier.addEventListener('keydown', function (e) {
       var dir = { ArrowRight: 1, ArrowDown: 1, ArrowLeft: -1, ArrowUp: -1 }[e.key];
       if (!dir) return;
@@ -247,6 +260,13 @@
   /* ---------- Przycisk płatności ---------- */
   var payBtn = $('[data-pay-button]');
   if (payBtn) {
+    payBtn.addEventListener('click', function () {
+      track('donate_click', {
+        method: PAYMENT_URL ? 'online' : 'online_unavailable',
+        value: selectedAmount || undefined,
+        currency: 'PLN'
+      });
+    });
     if (PAYMENT_URL) {
       payBtn.href = PAYMENT_URL;
       payBtn.target = '_blank';
@@ -283,6 +303,7 @@
         btn.classList.add('is-copied');
         btn.textContent = 'Skopiowano';
         toast('Skopiowano do schowka');
+        track('copy_payment_details', { field: btn.closest('.bank-row').querySelector('dt').textContent });
         setTimeout(function () {
           btn.classList.remove('is-copied');
           btn.textContent = 'Kopiuj';
@@ -290,6 +311,13 @@
       }, function () {
         toast('Nie udało się skopiować – zaznacz tekst ręcznie.');
       });
+    });
+  });
+
+  /* ---------- Kontakt mailowy ---------- */
+  $$('a[href^="mailto:"]').forEach(function (a) {
+    a.addEventListener('click', function () {
+      track('contact_click', { location: a.closest('section, footer') ? a.closest('section, footer').id || 'footer' : 'page' });
     });
   });
 
