@@ -5,10 +5,6 @@
      Konfiguracja
      ========================================================== */
 
-  // Link do bramki płatności (np. PayU, Przelewy24, Tpay, zrzutka).
-  // Dopóki pusty, przycisk przewija do danych do przelewu tradycyjnego.
-  var PAYMENT_URL = '';
-
   var BILLBOARD_COST = 12000;
   var STAGE_COST = 3000;
 
@@ -209,7 +205,6 @@
   var tiers = $$('.tier');
   var costFill = $('[data-cost-fill]');
   var costCaption = $('[data-cost-caption]');
-  var payAmount = $('[data-pay-amount]');
   var selectedAmount = null;
 
   function describe(amount) {
@@ -238,7 +233,6 @@
     var width = Math.max(selectedAmount / BILLBOARD_COST * 100, 1.2);
     costFill.style.width = width + '%';
     costCaption.innerHTML = describe(selectedAmount);
-    payAmount.textContent = formatPLN(selectedAmount);
   }
 
   tiers.forEach(function (tier, i) {
@@ -256,28 +250,6 @@
       selectTier(next);
     });
   });
-
-  /* ---------- Przycisk płatności ---------- */
-  var payBtn = $('[data-pay-button]');
-  if (payBtn) {
-    payBtn.addEventListener('click', function () {
-      track('donate_click', {
-        method: PAYMENT_URL ? 'online' : 'online_unavailable',
-        value: selectedAmount || undefined,
-        currency: 'PLN'
-      });
-    });
-    if (PAYMENT_URL) {
-      payBtn.href = PAYMENT_URL;
-      payBtn.target = '_blank';
-      payBtn.rel = 'noopener';
-    } else {
-      payBtn.href = '#przelew';
-      payBtn.addEventListener('click', function () {
-        toast('Płatności online wkrótce – skorzystaj z przelewu lub BLIK na telefon.');
-      });
-    }
-  }
 
   /* ---------- Kopiowanie danych do przelewu ---------- */
   function copyText(text) {

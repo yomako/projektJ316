@@ -772,12 +772,7 @@ p { margin: 0 0 1.1em; }
 .company p { color: var(--muted); margin: 0; }
 .company .btn { flex-shrink: 0; }
 
-.pay {
-  display: grid;
-  grid-template-columns: 1fr 1.2fr;
-  gap: 22px;
-  margin-top: 22px;
-}
+.pay { margin-top: 22px; }
 .pay-card {
   padding: clamp(28px, 4vw, 44px);
   background: var(--surface);
@@ -786,15 +781,6 @@ p { margin: 0 0 1.1em; }
 }
 .pay-card h3 { font-size: 1.8rem; }
 .pay-card > p { color: var(--muted); }
-.pay-online {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  border-color: rgba(255, 4, 4, .5);
-}
-.pay-online .btn { margin: 10px 0 16px; }
-.pay-online .small { margin: 0; text-align: center; }
-[data-pay-amount]:not(:empty)::before { content: "· "; }
 
 .bank { margin: 0 0 18px; }
 .bank-row {
@@ -1058,7 +1044,6 @@ p { margin: 0 0 1.1em; }
   .nav .btn { font-size: 1.3rem; padding: .8em 2em; }
 
   .cards-3 { grid-template-columns: 1fr; }
-  .pay { grid-template-columns: 1fr; }
   .company { flex-direction: column; align-items: flex-start; gap: 24px; }
 }
 
