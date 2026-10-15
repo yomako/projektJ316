@@ -1,559 +1,1166 @@
 <!doctype html>
 <html lang="pl">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!-- Google Consent Mode v2 – domyślnie brak zgody; musi być przed gtag.js -->
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('consent', 'default', {
-      ad_storage: 'denied',
-      ad_user_data: 'denied',
-      ad_personalization: 'denied',
-      analytics_storage: 'denied',
-      functionality_storage: 'granted',
-      security_storage: 'granted',
-      wait_for_update: 500
-    });
-    gtag('set', 'ads_data_redaction', true);
-    // przywrócenie wcześniej zapisanej decyzji (patrz js/consent.js)
-    try {
-      var c = JSON.parse(localStorage.getItem('j316_consent'));
-      if (c && c.v === 1 && Date.now() - c.ts < 365 * 864e5) {
-        gtag('consent', 'update', {
-          analytics_storage: c.analytics ? 'granted' : 'denied',
-          ad_storage: c.marketing ? 'granted' : 'denied',
-          ad_user_data: c.marketing ? 'granted' : 'denied',
-          ad_personalization: c.marketing ? 'granted' : 'denied'
-        });
+    <!-- Google Consent Mode v2 – domyślnie brak zgody; musi być przed gtag.js -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
       }
-    } catch (e) {}
-  </script>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RKP0FZEW2B"></script>
-  <script>
-    gtag('js', new Date());
-    gtag('config', 'G-RKP0FZEW2B');
-  </script>
+      gtag("consent", "default", {
+        ad_storage: "denied",
+        ad_user_data: "denied",
+        ad_personalization: "denied",
+        analytics_storage: "denied",
+        functionality_storage: "granted",
+        security_storage: "granted",
+        wait_for_update: 500,
+      });
+      gtag("set", "ads_data_redaction", true);
+      // przywrócenie wcześniej zapisanej decyzji (patrz js/consent.js)
+      try {
+        var c = JSON.parse(localStorage.getItem("j316_consent"));
+        if (c && c.v === 1 && Date.now() - c.ts < 365 * 864e5) {
+          gtag("consent", "update", {
+            analytics_storage: c.analytics ? "granted" : "denied",
+            ad_storage: c.marketing ? "granted" : "denied",
+            ad_user_data: c.marketing ? "granted" : "denied",
+            ad_personalization: c.marketing ? "granted" : "denied",
+          });
+        }
+      } catch (e) {}
+    </script>
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-RKP0FZEW2B"
+    ></script>
+    <script>
+      gtag("js", new Date());
+      gtag("config", "G-RKP0FZEW2B");
+    </script>
 
-  <title>Projekt J 3,16 – Kod, który odmieni polskie ulice</title>
-  <meta name="description" content="Projekt J 3,16 – 4-etapowa kampania billboardowa o bezwarunkowej miłości Boga. Wesprzyj akcję i pomóż wypełnić polskie ulice Jego Miłością.">
-  <meta property="og:title" content="Projekt J 3,16 – Kod, który odmieni polskie ulice">
-  <meta property="og:description" content="4-etapowa kampania billboardowa o bezwarunkowej miłości Boga. Dołącz i wesprzyj akcję!">
-  <link rel="canonical" href="https://www.projektj316.com/">
-  <meta property="og:url" content="https://www.projektj316.com/">
-  <meta property="og:image" content="https://www.projektj316.com/assets/img/hero.png">
-  <meta property="og:type" content="website">
-  <meta name="theme-color" content="#000000">
-  <link rel="icon" type="image/png" href="assets/img/favicon.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Antonio:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
-  <script>document.documentElement.classList.add('js');</script>
-</head>
-<body>
-  <a class="skip-link" href="#main">Przejdź do treści</a>
+    <title>Projekt J 3,16 – Kod, który odmieni polskie ulice</title>
+    <meta
+      name="description"
+      content="Projekt J 3,16 – 4-etapowa kampania billboardowa o bezwarunkowej miłości Boga. Wesprzyj akcję i pomóż wypełnić polskie ulice Jego Miłością."
+    />
+    <meta
+      property="og:title"
+      content="Projekt J 3,16 – Kod, który odmieni polskie ulice"
+    />
+    <meta
+      property="og:description"
+      content="4-etapowa kampania billboardowa o bezwarunkowej miłości Boga. Dołącz i wesprzyj akcję!"
+    />
+    <link rel="canonical" href="https://www.projektj316.com/" />
+    <meta property="og:url" content="https://www.projektj316.com/" />
+    <meta
+      property="og:image"
+      content="https://www.projektj316.com/assets/img/hero.png"
+    />
+    <meta property="og:type" content="website" />
+    <meta name="theme-color" content="#000000" />
+    <link rel="icon" type="image/png" href="assets/img/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Antonio:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <script>
+      document.documentElement.classList.add("js");
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Przejdź do treści</a>
 
-  <!-- ===== Nagłówek ===== -->
-  <header class="site-header">
-    <div class="container header-inner">
-      <a href="#top" class="brand" aria-label="Projekt J 3,16 – strona główna">
-        <img src="assets/img/logo-wide.png" alt="Projekt J 3,16" width="850" height="300">
-      </a>
+    <!-- ===== Nagłówek ===== -->
+    <header class="site-header">
+      <div class="container header-inner">
+        <a
+          href="#top"
+          class="brand"
+          aria-label="Projekt J 3,16 – strona główna"
+        >
+          <img
+            src="assets/img/logo-wide.png"
+            alt="Projekt J 3,16"
+            width="850"
+            height="300"
+          />
+        </a>
 
-      <button class="nav-toggle" aria-expanded="false" aria-controls="nav" aria-label="Otwórz menu">
-        <span></span><span></span><span></span>
-      </button>
+        <button
+          class="nav-toggle"
+          aria-expanded="false"
+          aria-controls="nav"
+          aria-label="Otwórz menu"
+        >
+          <span></span><span></span><span></span>
+        </button>
 
-      <nav class="nav" id="nav" aria-label="Główna nawigacja">
-        <ul>
-          <li><a href="#kim-jestem">Kim jestem</a></li>
-          <li><a href="#kampania">Kampania</a></li>
-          <li><a href="#srodki">Na co środki</a></li>
-          <li><a href="#korzysci">Co zyskujesz</a></li>
-          <li><a href="#regulamin">Regulamin</a></li>
-          <li><a href="#wesprzyj" class="btn btn-primary btn-sm">Wesprzyj</a></li>
-        </ul>
-      </nav>
+        <nav class="nav" id="nav" aria-label="Główna nawigacja">
+          <ul>
+            <li><a href="#kim-jestem">Kim jestem</a></li>
+            <li><a href="#kampania">Kampania</a></li>
+            <li><a href="#srodki">Na co środki</a></li>
+            <li><a href="#korzysci">Co zyskujesz</a></li>
+            <li><a href="#regulamin">Regulamin</a></li>
+            <li>
+              <a href="#wesprzyj" class="btn btn-primary btn-sm">Wesprzyj</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <!-- ===== Hero ===== -->
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-glow" aria-hidden="true"></div>
+        <div class="container hero-inner">
+          <h1 id="hero-title" class="hero-title">
+            <span class="hero-projekt">Projekt</span>
+            <span class="hero-code">J&nbsp;3,16</span>
+          </h1>
+          <img
+            src="assets/img/zawijas.png"
+            alt=""
+            class="scribble hero-scribble"
+            aria-hidden="true"
+          />
+          <p class="hero-tagline">
+            <span class="red">Kod</span>, który odmieni polskie ulice
+          </p>
+          <p class="hero-lead">
+            4-etapowa kampania billboardowa o bezwarunkowej miłości Boga.<br />Przekaz,
+            który nie chce niczego sprzedać – chce dać nadzieję.
+          </p>
+          <div class="hero-actions">
+            <a href="#wesprzyj" class="btn btn-primary">Wesprzyj projekt</a>
+            <a href="#kampania" class="btn btn-ghost">Zobacz kampanię</a>
+          </div>
+        </div>
+        <a href="#kim-jestem" class="scroll-hint" aria-label="Przewiń w dół"
+          ><span></span
+        ></a>
+      </section>
+
+      <!-- ===== Kim jestem ===== -->
+      <section class="section" id="kim-jestem" aria-labelledby="kim-title">
+        <div class="container narrow">
+          <h2 class="section-title reveal" id="kim-title">Kim jestem?</h2>
+          <div class="prose reveal">
+            <p class="lead">
+              Jestem człowiekiem, który wierzy, że najpiękniejsza nowina o Bożej
+              miłości zasługuje na to, by wyjść z murów kościołów
+              <span class="red">prosto na ulice naszych miast.</span>
+            </p>
+            <p>
+              Żyjemy w świecie, w którym zewsząd krzyczą do nas reklamy:
+              <em>„kup to”</em>, <em>„bądź lepszy”</em>,
+              <em>„nie pasujesz”</em>. Chcę to zmienić. Chcę, aby w drodze do
+              pracy, szkoły czy na zakupy, tysiące Polaków zatrzymało się przed
+              przekazem, który nie chce od nich niczego kupić, ale chce im dać…
+              <strong>nadzieję.</strong>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== Wiadomość ===== -->
+      <section
+        class="section section-alt"
+        id="wiadomosc"
+        aria-labelledby="wiad-title"
+      >
+        <div class="container narrow">
+          <h2 class="section-title reveal" id="wiad-title">
+            Wiadomość, której potrzebuje dzisiejszy świat
+          </h2>
+          <div class="prose reveal">
+            <p>
+              Pamiętasz słynną akcję
+              <strong>„Wszystko przemija, a ja wciąż trwam”</strong>, która lata
+              temu poruszyła całą Polskę? Pokazała ona, że jako społeczeństwo
+              głęboko potrzebujemy Słowa Bożego w przestrzeni publicznej.
+            </p>
+            <p>
+              Dzisiaj, po latach, w ramach Projektu J 3,16 chcę zrobić coś
+              podobnego, ale jeszcze bardziej osobistego –
+              <strong
+                >4-etapową kampanię billboardową o bezwarunkowej miłości
+                Boga.</strong
+              >
+              Przekaz, który nie chce niczego sprzedać, ale daje ludziom
+              bezcenną nadzieję. Pomóż mi opłacić powierzchnie reklamowe i
+              sprawić, by ten głos zabrzmiał na naszych ulicach!
+            </p>
+          </div>
+        </div>
+
+        <div class="statement reveal" role="presentation">
+          <p class="statement-line">
+            Zbuduj z nami unikalną kampanię billboardową
+          </p>
+          <p class="statement-line red">o bezwarunkowej Miłości</p>
+          <img
+            src="assets/img/zawijas.png"
+            alt=""
+            class="scribble"
+            aria-hidden="true"
+          />
+        </div>
+      </section>
+
+      <!-- ===== Kampania ===== -->
+      <section class="section" id="kampania" aria-labelledby="kamp-title">
+        <div class="container">
+          <h2 class="section-title center reveal" id="kamp-title">
+            O co chodzi w Projekcie J 3,16?
+          </h2>
+          <div class="prose center-text narrow reveal">
+            <p>
+              Zaprojektowałem unikalną, 4-etapową kampanię typu
+              <strong>teaser</strong>. To nie będą zwykłe ogłoszenia. To
+              intrygujący dialog, który zaczyna się od tajemnicy, a kończy na
+              potężnym świadectwie Ewangelii.
+            </p>
+            <p>
+              Przez cztery kolejne tygodnie przechodnie w polskich miastach będą
+              śledzić opowieść, która krok po kroku odsłania karty:
+            </p>
+          </div>
+
+          <div class="campaign reveal" data-campaign>
+            <div
+              class="campaign-tabs"
+              role="tablist"
+              aria-label="Etapy kampanii"
+            >
+              <button
+                class="campaign-tab is-active"
+                role="tab"
+                id="tab-1"
+                aria-controls="panel-1"
+                aria-selected="true"
+              >
+                <span class="tab-num">01</span
+                ><span class="tab-label">Tydzień 1</span
+                ><span class="tab-sub">Tajemnica</span>
+              </button>
+              <button
+                class="campaign-tab"
+                role="tab"
+                id="tab-2"
+                aria-controls="panel-2"
+                aria-selected="false"
+                tabindex="-1"
+              >
+                <span class="tab-num">02</span
+                ><span class="tab-label">Tydzień 2</span
+                ><span class="tab-sub">Oczekiwanie</span>
+              </button>
+              <button
+                class="campaign-tab"
+                role="tab"
+                id="tab-3"
+                aria-controls="panel-3"
+                aria-selected="false"
+                tabindex="-1"
+              >
+                <span class="tab-num">03</span
+                ><span class="tab-label">Tydzień 3</span
+                ><span class="tab-sub">Miłość</span>
+              </button>
+              <button
+                class="campaign-tab"
+                role="tab"
+                id="tab-4"
+                aria-controls="panel-4"
+                aria-selected="false"
+                tabindex="-1"
+              >
+                <span class="tab-num">04</span
+                ><span class="tab-label">Tydzień 4</span
+                ><span class="tab-sub">Finał</span>
+              </button>
+              <div class="campaign-progress" aria-hidden="true">
+                <span></span>
+              </div>
+            </div>
+
+            <div class="campaign-panels">
+              <article
+                class="campaign-panel is-active"
+                role="tabpanel"
+                id="panel-1"
+                aria-labelledby="tab-1"
+              >
+                <button
+                  class="campaign-image"
+                  data-lightbox="assets/img/tydzien-1.png"
+                  aria-label="Powiększ grafikę – Tydzień 1"
+                >
+                  <img
+                    src="assets/img/tydzien-1.png"
+                    alt="Billboard tydzień 1: Wiem o Tobie wszystko. A Ty mnie prawie nie znasz."
+                    width="1200"
+                    height="1200"
+                    loading="lazy"
+                  />
+                </button>
+                <div class="campaign-text">
+                  <p class="campaign-week">Tydzień 1</p>
+                  <blockquote>
+                    „Wiem o Tobie wszystko.
+                    <span class="red">A Ty mnie prawie nie znasz.</span>”
+                  </blockquote>
+                  <p>
+                    Początek dialogu. Ktoś zna przechodnia lepiej niż on sam
+                    siebie – ale kto? Pierwszy krok opowieści budzi ciekawość i
+                    zatrzymuje w biegu.
+                  </p>
+                </div>
+              </article>
+
+              <article
+                class="campaign-panel"
+                role="tabpanel"
+                id="panel-2"
+                aria-labelledby="tab-2"
+                hidden
+              >
+                <button
+                  class="campaign-image"
+                  data-lightbox="assets/img/tydzien-2.png"
+                  aria-label="Powiększ grafikę – Tydzień 2"
+                >
+                  <img
+                    src="assets/img/tydzien-2.png"
+                    alt="Billboard tydzień 2: Nawet jeśli nie przyjdziesz, ja i tak będę czekał. Otwarte drzwi, z których wpada światło."
+                    width="1200"
+                    height="1200"
+                    loading="lazy"
+                  />
+                </button>
+                <div class="campaign-text">
+                  <p class="campaign-week">Tydzień 2</p>
+                  <blockquote>
+                    „Nawet jeśli nie przyjdziesz,
+                    <span class="red">ja i tak będę czekał.</span>”
+                  </blockquote>
+                  <p>
+                    Otwarte drzwi i światło, które czeka. Druga odsłona mówi o
+                    wierności, która nie zależy od tego, czy na nią odpowiemy.
+                  </p>
+                </div>
+              </article>
+
+              <article
+                class="campaign-panel"
+                role="tabpanel"
+                id="panel-3"
+                aria-labelledby="tab-3"
+                hidden
+              >
+                <button
+                  class="campaign-image"
+                  data-lightbox="assets/img/tydzien-3.png"
+                  aria-label="Powiększ grafikę – Tydzień 3"
+                >
+                  <img
+                    src="assets/img/tydzien-3.png"
+                    alt="Billboard tydzień 3: Miłość nie stawia warunków. Po prostu jest. Już niedługo poznasz moje imię."
+                    width="1200"
+                    height="1200"
+                    loading="lazy"
+                  />
+                </button>
+                <div class="campaign-text">
+                  <p class="campaign-week">Tydzień 3</p>
+                  <blockquote>
+                    „Miłość nie stawia warunków.
+                    <span class="red">Po prostu jest.</span>”
+                  </blockquote>
+                  <p>
+                    Ostatni krok przed odsłoną.
+                    <em>„Już niedługo poznasz moje imię”</em> – napięcie sięga
+                    zenitu.
+                  </p>
+                </div>
+              </article>
+
+              <article
+                class="campaign-panel"
+                role="tabpanel"
+                id="panel-4"
+                aria-labelledby="tab-4"
+                hidden
+              >
+                <button
+                  class="campaign-image"
+                  data-lightbox="assets/img/tydzien-4.png"
+                  aria-label="Powiększ grafikę – Tydzień 4"
+                >
+                  <img
+                    src="assets/img/tydzien-4.png"
+                    alt="Billboard tydzień 4: Za tym wszystkim stoi Bóg. Tak bowiem Bóg umiłował świat… J 3,16"
+                    width="1200"
+                    height="1200"
+                    loading="lazy"
+                  />
+                </button>
+                <div class="campaign-text">
+                  <p class="campaign-week">Tydzień 4 · Finał</p>
+                  <blockquote>
+                    „Za tym wszystkim stoi <span class="red">Bóg.</span>”
+                  </blockquote>
+                  <p>
+                    Wielki finał i potężne Słowo z Ewangelii wg św. Jana o
+                    miłości, która daje wszystko:
+                  </p>
+                  <p class="verse">
+                    „Tak bowiem Bóg umiłował świat, że Syna swego Jednorodzonego
+                    dał, aby każdy, kto w Niego wierzy, nie zginął, ale miał
+                    życie wieczne.” <cite>(J 3,16)</cite>
+                  </p>
+                </div>
+              </article>
+            </div>
+
+            <div class="campaign-nav">
+              <button
+                class="icon-btn"
+                data-campaign-prev
+                aria-label="Poprzedni etap"
+              >
+                &#8592;
+              </button>
+              <button
+                class="icon-btn"
+                data-campaign-next
+                aria-label="Następny etap"
+              >
+                &#8594;
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== Dlaczego wsparcie ===== -->
+      <section
+        class="section section-alt"
+        id="dlaczego"
+        aria-labelledby="dl-title"
+      >
+        <div class="container narrow">
+          <h2 class="section-title reveal" id="dl-title">
+            Dlaczego potrzebuję Twojego wsparcia?
+          </h2>
+          <div class="prose reveal">
+            <p>
+              Projekt J 3,16 ma jeden słaby punkt: wynajem billboardów w
+              przestrzeni miejskiej i druk wielkoformatowy kosztują, a robię to
+              zupełnie sam, z czystej potrzeby serca.
+              <strong
+                >Nie stoi za mną wielka fundacja ani korporacyjny
+                budżet.</strong
+              >
+            </p>
+            <p>
+              Mam jednak głęboką wiarę, że jeśli ten przekaz poruszy Twoje
+              serce, to wspólnie możemy dotrzeć do serc tysięcy ludzi.
+            </p>
+            <p class="highlight">
+              Każda Twoja wpłata to konkretne centymetry kwadratowe przestrzeni
+              miejskiej, na której zamiast kolejnej reklamy smartfona, pojawi
+              się <span class="red">żywe Boże Słowo.</span>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== Na co środki ===== -->
+      <section class="section" id="srodki" aria-labelledby="sr-title">
+        <div class="container">
+          <h2 class="section-title center reveal" id="sr-title">
+            Na co zostaną przeznaczone zebrane środki?
+          </h2>
+          <p class="big-number reveal">
+            <span class="red" data-count="100">100</span>%
+          </p>
+          <p class="center-text reveal muted">
+            zebranych funduszy trafia bezpośrednio na realizację akcji
+          </p>
+
+          <div class="cards cards-3">
+            <article class="card reveal">
+              <div class="card-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <rect x="2" y="4" width="20" height="11" rx="1" />
+                  <path d="M8 15v6M16 15v6M5 21h14" />
+                </svg>
+              </div>
+              <h3>Wynajem powierzchni reklamowych</h3>
+              <p>
+                Billboardy wielkoformatowe oraz citylighty na przystankach w
+                wybranych miastach.
+              </p>
+            </article>
+            <article class="card reveal">
+              <div class="card-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <path d="M6 9V3h12v6" />
+                  <rect x="2" y="9" width="20" height="8" rx="1" />
+                  <path d="M6 14h12v7H6z" />
+                </svg>
+              </div>
+              <h3>Profesjonalny druk</h3>
+              <p>
+                Druk wielkoformatowy materiałów na każdy z 4 etapów kampanii.
+              </p>
+            </article>
+            <article class="card reveal">
+              <div class="card-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <circle cx="12" cy="12" r="9" />
+                  <path
+                    d="M3 12h18M12 3c3 3.5 3 14.5 0 18M12 3c-3 3.5-3 14.5 0 18"
+                  />
+                </svg>
+              </div>
+              <h3>Rozszerzenie zasięgu</h3>
+              <p>
+                Jeśli zbierzemy więcej – dodamy kolejne miasta oraz uruchomimy
+                kampanię w mediach społecznościowych.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== Korzyści ===== -->
+      <section
+        class="section section-alt"
+        id="korzysci"
+        aria-labelledby="ko-title"
+      >
+        <div class="container">
+          <h2 class="section-title center reveal" id="ko-title">
+            Co zyskujesz, dołączając do Projektu J 3,16?
+          </h2>
+          <div class="cards cards-2">
+            <article class="card card-line reveal">
+              <h3><span class="red">01</span> Pełna transparentność</h3>
+              <p>
+                Na tej stronie będę regularnie publikować fotorelacje z miast, w
+                których zawisną billboardy – zobaczysz realny owoc swojej
+                wpłaty.
+              </p>
+            </article>
+            <article class="card card-line reveal">
+              <h3><span class="red">02</span> Materiały cyfrowe</h3>
+              <p>
+                Będziesz mógł pobrać cyfrowe wersje grafik do wykorzystania w
+                swoich mediach społecznościowych.
+              </p>
+            </article>
+            <article class="card card-line reveal">
+              <h3><span class="red">03</span> Lista Wspierających</h3>
+              <p>
+                Imiona i nazwiska (lub inicjały) osób wspierających umieszczę w
+                sekcji podziękowań na dole strony (chyba że wolisz wpłatę
+                anonimową).
+              </p>
+            </article>
+            <article class="card card-line reveal">
+              <h3><span class="red">04</span> Partner / Sponsor</h3>
+              <p>
+                Jeśli reprezentujesz media, wspólnotę, parafię lub firmę – Twoje
+                logo trafi do oficjalnej sekcji Partnerów Projektu J 3,16 na
+                naszej stronie głównej i w materiałach prasowych.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== Wesprzyj ===== -->
+      <section
+        class="section support"
+        id="wesprzyj"
+        aria-labelledby="wes-title"
+      >
+        <div class="container">
+          <h2 class="section-title center reveal" id="wes-title">
+            Dołącz do Projektu J 3,16 – <span class="red">Wesprzyj akcję!</span>
+          </h2>
+          <p class="center-text narrow reveal lead">
+            Każda wpłata to realny metraż przestrzeni miejskiej, z której
+            zamiast reklam kolejnego kredytu czy smartfona, popłynie przekaz o
+            Bożej Miłości.
+          </p>
+
+          <!-- Koszt billboardu -->
+          <div class="cost reveal">
+            <p class="cost-intro">
+              Pełna, 4-etapowa historia na jednym billboardzie to 4 osobne akcje
+              plakatowania i wynajmu
+              <strong>(po 3&nbsp;000&nbsp;zł za każdy etap)</strong>. Łączny
+              koszt wyświetlania całej opowieści na 1 nośniku przez miesiąc
+              wynosi:
+            </p>
+            <div class="cost-total"><span>12&nbsp;000</span> zł</div>
+            <div class="cost-bar" aria-hidden="true">
+              <div class="cost-stage">
+                <span>Etap 1</span><small>3 000 zł</small>
+              </div>
+              <div class="cost-stage">
+                <span>Etap 2</span><small>3 000 zł</small>
+              </div>
+              <div class="cost-stage">
+                <span>Etap 3</span><small>3 000 zł</small>
+              </div>
+              <div class="cost-stage">
+                <span>Etap 4</span><small>3 000 zł</small>
+              </div>
+              <div class="cost-fill" data-cost-fill></div>
+            </div>
+            <p class="cost-caption" data-cost-caption aria-live="polite">
+              Wybierz cegiełkę poniżej, aby zobaczyć, jaką część billboardu
+              sfinansujesz.
+            </p>
+          </div>
+
+          <!-- Cegiełki -->
+          <h3 class="sub-title center reveal">
+            Dzielimy tę kwotę na mniejsze cegiełki, aby każdy mógł dołożyć swoją
+            część:
+          </h3>
+          <div
+            class="tiers reveal"
+            role="radiogroup"
+            aria-label="Wybierz kwotę wsparcia"
+          >
+            <button
+              class="tier"
+              role="radio"
+              aria-checked="false"
+              data-amount="50"
+            >
+              <span class="tier-amount">50 zł</span>
+              <span class="tier-desc"
+                >Podstawowa cegiełka na druk materiałów wielkoformatowych.</span
+              >
+            </button>
+            <button
+              class="tier"
+              role="radio"
+              aria-checked="false"
+              data-amount="100"
+            >
+              <span class="tier-amount">100 zł</span>
+              <span class="tier-desc"
+                >Twój wkład w druk i montaż wielkoformatowych materiałów.</span
+              >
+            </button>
+            <button
+              class="tier"
+              role="radio"
+              aria-checked="false"
+              data-amount="750"
+            >
+              <span class="tier-amount">750 zł</span>
+              <span class="tier-desc"
+                >Finansujesz 25% kosztów 1 etapu kampanii w centrum
+                miasta.</span
+              >
+            </button>
+            <button
+              class="tier tier-featured"
+              role="radio"
+              aria-checked="false"
+              data-amount="3000"
+            >
+              <span class="tier-badge">Pełny etap</span>
+              <span class="tier-amount">3 000 zł</span>
+              <span class="tier-desc"
+                >Pokrywasz pełny koszt 1 ETAPU (np. Tydzień 1: Tajemnica) na
+                jednym billboardzie.</span
+              >
+            </button>
+            <button
+              class="tier"
+              role="radio"
+              aria-checked="false"
+              data-amount="5000"
+            >
+              <span class="tier-amount">5 000 zł</span>
+              <span class="tier-desc"
+                >Maksymalne indywidualne wsparcie od osoby prywatnej (zgodnie z
+                kwotą wolną od podatku od darowizn) – finansujesz niemal 2 pełne
+                etapy akcji!</span
+              >
+            </button>
+          </div>
+
+          <!-- Firmy -->
+          <div class="company reveal">
+            <div>
+              <h3>
+                Chcesz ufundować
+                <span class="red">CAŁY BILLBOARD (12&nbsp;000&nbsp;zł)</span>
+                jako Firma, Wspólnota lub Grupa?
+              </h3>
+              <p>
+                Jeżeli prowadzisz działalność gospodarczą, reprezentujesz firmę,
+                wspólnotę lub chcesz wraz z grupą znajomych sfinansować pełną
+                4-etapową kampanię na wybranym billboardzie – skontaktuj się ze
+                mną bezpośrednio. Przekażemy szczegóły dotyczące darowizny od
+                firm, sponsoringu lub wpłat grupowych.
+              </p>
+            </div>
+            <a
+              class="btn btn-ghost"
+              href="mailto:projektj316@gmail.com?subject=Projekt%20J%203%2C16%20%E2%80%93%20sponsoring%20%2F%20wp%C5%82ata%20grupowa"
+              >Skontaktuj się</a
+            >
+          </div>
+
+          <!-- Płatności -->
+          <div class="pay">
+            <div class="pay-card pay-bank reveal" id="przelew">
+              <h3>Tradycyjny przelew bankowy</h3>
+              <p>
+                Jeśli preferujesz tradycyjną bankowość internetową lub przelew
+                na poczcie:
+              </p>
+              <dl class="bank">
+                <div class="bank-row">
+                  <dt>Nazwa odbiorcy</dt>
+                  <dd>
+                    <span>Projektj316</span
+                    ><button class="copy-btn" data-copy="Projektj316">
+                      Kopiuj
+                    </button>
+                  </dd>
+                </div>
+                <div class="bank-row">
+                  <dt>Numer konta</dt>
+                  <dd>
+                    <span class="mono">PL 34 1140 2004 0000 3102 8673 1702</span
+                    ><button
+                      class="copy-btn"
+                      data-copy="PL34114020040000310286731702"
+                    >
+                      Kopiuj
+                    </button>
+                  </dd>
+                </div>
+                <div class="bank-row">
+                  <dt>Tytuł przelewu</dt>
+                  <dd>
+                    <span>Darowizna na cel: Projekt 3,16</span
+                    ><button
+                      class="copy-btn"
+                      data-copy="Darowizna na cel: Projekt 3,16"
+                    >
+                      Kopiuj
+                    </button>
+                  </dd>
+                </div>
+                <div class="bank-row">
+                  <dt>BLIK na telefon</dt>
+                  <dd>
+                    <span class="mono">669 363 464</span
+                    ><button class="copy-btn" data-copy="669363464">
+                      Kopiuj
+                    </button>
+                  </dd>
+                </div>
+              </dl>
+              <p class="small muted">
+                Możesz też przesłać szybki BLIK na numer telefonu 669 363 464 z
+                dopiskiem <em>Projekt J 3,16</em>.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== Cytat ===== -->
+      <section class="quote-section" aria-label="Ewangelia wg św. Jana 3,16">
+        <div class="container narrow">
+          <figure class="quote reveal">
+            <span class="quote-mark" aria-hidden="true">”</span>
+            <blockquote>
+              <p>
+                Tak bowiem Bóg umiłował świat, że Syna swego Jednorodzonego dał,
+                <span class="red"
+                  >aby każdy, kto w Niego wierzy, nie zginął, ale miał życie
+                  wieczne.</span
+                >
+              </p>
+            </blockquote>
+            <figcaption>– Jana 3, 16</figcaption>
+            <img
+              src="assets/img/zawijas.png"
+              alt=""
+              class="scribble"
+              aria-hidden="true"
+            />
+          </figure>
+        </div>
+      </section>
+
+      <!-- ===== Zakończenie ===== -->
+      <section class="section closing" aria-labelledby="close-title">
+        <div class="container narrow center-text">
+          <h2 class="closing-title reveal" id="close-title">
+            Bóg nie czeka, aż będziemy idealni, by nas kochać.
+            <span class="red"
+              >Ja nie czekam na miliony, by zacząć działać.</span
+            >
+          </h2>
+          <p class="lead reveal">
+            Pomóż mi zapełnić polskie ulice Jego Miłością.
+          </p>
+          <a href="#wesprzyj" class="btn btn-primary btn-lg reveal"
+            >Zostań Darczyńcą / Partnerem / Sponsorem już dziś!</a
+          >
+        </div>
+      </section>
+
+      <!-- ===== Partnerzy i Wspierający ===== -->
+      <section
+        class="section section-alt"
+        id="podziekowania"
+        aria-labelledby="pod-title"
+      >
+        <div class="container">
+          <h2 class="section-title center reveal" id="pod-title">
+            Podziękowania
+          </h2>
+          <div class="thanks">
+            <div class="thanks-col reveal">
+              <h3>Partnerzy Projektu J 3,16</h3>
+              <!-- Logotypy partnerów: <li><img src="assets/img/partnerzy/nazwa.png" alt="Nazwa partnera"></li> -->
+              <ul
+                class="partners"
+                data-empty="Tu pojawią się logotypy partnerów i sponsorów."
+              ></ul>
+            </div>
+            <div class="thanks-col reveal">
+              <h3>Lista Wspierających</h3>
+              <!-- Wspierający: <li>Jan K.</li> -->
+              <ul
+                class="supporters"
+                data-empty="Tu pojawią się imiona osób wspierających. Dziękujemy!"
+              ></ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== Regulamin ===== -->
+      <section class="section" id="regulamin" aria-labelledby="reg-title">
+        <div class="container narrow">
+          <h2 class="section-title reveal" id="reg-title">
+            Regulamin darowizn
+          </h2>
+
+          <div class="accordion reveal">
+            <details>
+              <summary>§ 1. Postanowienia ogólne</summary>
+              <div class="accordion-body">
+                <ol>
+                  <li>
+                    Niniejszy Regulamin określa zasady przyjmowania darowizn
+                    pieniężnych przekazywanych za pośrednictwem strony
+                    internetowej www.projektj316.com zwanej dalej „Stroną”.
+                  </li>
+                  <li>
+                    Odbiorcą darowizn i Organizatorem akcji jest:<br />
+                    <strong>Andrzej Fornal</strong><br />
+                    zamieszkały w: ul. Rzymska 39, 03-976 Warszawa<br />
+                    E-mail:
+                    <a href="mailto:projektj316@gmail.com"
+                      >projektj316@gmail.com</a
+                    ><br />
+                    zwanym/ą dalej „Organizatorem”.
+                  </li>
+                  <li>
+                    Wpłacający, dokonując darowizny, akceptuje postanowienia
+                    niniejszego Regulaminu.
+                  </li>
+                </ol>
+              </div>
+            </details>
+            <details>
+              <summary>§ 2. Cel darowizn</summary>
+              <div class="accordion-body">
+                <ol>
+                  <li>
+                    Wszelkie wpłaty realizowane na Stronie stanowią dobrowolne
+                    darowizny pieniężne w rozumieniu art. 888 § 1 Kodeksu
+                    Cywilnego.
+                  </li>
+                  <li>
+                    Pozyskane środki przeznaczone zostaną w całości na
+                    realizację społeczno-ewangelizacyjnego projektu pt. „Projekt
+                    J 3,16”, w tym w szczególności na:
+                    <ul>
+                      <li>
+                        wynajem powierzchni reklamowych (billboardy,
+                        citylighty),
+                      </li>
+                      <li>druk wielkoformatowy materiałów graficznych,</li>
+                      <li>
+                        promowanie kampanii w mediach i przestrzeni cyfrowej.
+                      </li>
+                    </ul>
+                  </li>
+                </ol>
+              </div>
+            </details>
+            <details>
+              <summary>§ 3. Zasady składania darowizn</summary>
+              <div class="accordion-body">
+                <ol>
+                  <li>
+                    Darowiznę może przekazać każda osoba fizyczna posiadająca
+                    pełną zdolność do czynności prawnych, osoba prawna lub
+                    jednostka organizacyjna (zwana dalej „Darczyńcą”).
+                  </li>
+                  <li>
+                    Wpłaty można dokonywać za pośrednictwem operatora płatności
+                    internetowych, bezpośredniego przelewu na bankowy rachunek
+                    odbiorcy lub płatności mobilnej BLIK.
+                  </li>
+                  <li>Darczyńca sam wybiera kwotę darowizny.</li>
+                  <li>
+                    Przekazanie darowizny nie wiąże się ze świadczeniem
+                    wzajemnym ze strony Organizatora na rzecz Darczyńcy (jest to
+                    świadczenie nieodpłatne).
+                  </li>
+                </ol>
+              </div>
+            </details>
+            <details>
+              <summary>§ 4. Anulowanie wpłaty i zwroty</summary>
+              <div class="accordion-body">
+                <ol>
+                  <li>
+                    Ze względu na charakter darowizny (świadczenie nieodpłatne),
+                    wpłacone środki nie podlegają zwrotowi, z wyjątkiem sytuacji
+                    przewidzianych przepisami prawa lub pomyłek technicznych.
+                  </li>
+                  <li>
+                    W przypadku pomyłki technicznej Darczyńca powinien
+                    niezwłocznie skontaktować się z Organizatorem pod adresem
+                    e-mail:
+                    <a href="mailto:projektj316@gmail.com"
+                      >projektj316@gmail.com</a
+                    >
+                  </li>
+                </ol>
+              </div>
+            </details>
+            <details>
+              <summary>§ 5. Ochrona danych osobowych (RODO)</summary>
+              <div class="accordion-body">
+                <ol>
+                  <li>
+                    Administratorem danych osobowych Darczyńców jest
+                    Organizator.
+                  </li>
+                  <li>
+                    Dane osobowe (imię, nazwisko, adres e-mail, kwota wpłaty)
+                    przetwarzane są wyłącznie w celu realizacji i zaksięgowania
+                    darowizny, kontaktu z Darczyńcą oraz publikacji na liście
+                    wspierających (wyłącznie za uprzednią, dobrowolną zgodą
+                    Darczyńcy).
+                  </li>
+                  <li>
+                    Darczyńca ma prawo wglądu do swoich danych, ich poprawiania
+                    oraz żądania ich usunięcia.
+                  </li>
+                  <li>
+                    Darczyńca może dokonać wpłaty w sposób w pełni anonimowy.
+                  </li>
+                </ol>
+              </div>
+            </details>
+            <details>
+              <summary>§ 6. Postanowienia końcowe</summary>
+              <div class="accordion-body">
+                <ol>
+                  <li>
+                    W sprawach nieuregulowanych niniejszym Regulaminem stosuje
+                    się przepisy Kodeksu Cywilnego.
+                  </li>
+                  <li>
+                    Regulamin wchodzi w życie z dniem opublikowania na Stronie.
+                  </li>
+                </ol>
+              </div>
+            </details>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ===== Stopka ===== -->
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <img
+          src="assets/img/logo-wide.png"
+          alt="Projekt J 3,16"
+          class="footer-logo"
+          width="850"
+          height="300"
+          loading="lazy"
+        />
+        <div class="footer-info">
+          <p>
+            <a href="mailto:projektj316@gmail.com">projektj316@gmail.com</a>
+          </p>
+          <p class="muted">www.projektj316.com</p>
+        </div>
+        <nav class="footer-nav" aria-label="Stopka">
+          <a href="#wesprzyj">Wesprzyj</a>
+          <a href="#regulamin">Regulamin darowizn</a>
+          <button type="button" class="link-btn" data-consent-open>
+            Ustawienia cookies
+          </button>
+          <a href="#top">Do góry ↑</a>
+        </nav>
+      </div>
+      <p class="copyright container">
+        © <span data-year></span> Projekt J 3,16
+      </p>
+    </footer>
+
+    <!-- Lightbox -->
+    <dialog class="lightbox" aria-label="Podgląd grafiki">
+      <button class="lightbox-close" aria-label="Zamknij">&times;</button>
+      <img src="" alt="" />
+    </dialog>
+
+    <!-- Toast -->
+    <div class="toast" role="status" aria-live="polite"></div>
+
+    <!-- Baner zgód (Consent Mode v2) -->
+    <div
+      class="consent"
+      role="dialog"
+      aria-labelledby="consent-title"
+      aria-describedby="consent-desc"
+      hidden
+    >
+      <div class="consent-inner">
+        <h2 class="consent-title" id="consent-title">
+          Szanujemy Twoją prywatność
+        </h2>
+        <p class="consent-desc" id="consent-desc">
+          Używamy plików cookies i podobnych technologii. Niezbędne zapewniają
+          działanie strony. Za Twoją zgodą użyjemy też narzędzi analitycznych
+          Google Analytics, żeby zobaczyć, ile osób odwiedza stronę i co je
+          interesuje. Zgodę możesz w każdej chwili zmienić w stopce strony
+          („Ustawienia cookies”).
+        </p>
+
+        <div class="consent-settings" id="consent-settings" hidden>
+          <div class="consent-option">
+            <div>
+              <p class="consent-option-title">Niezbędne</p>
+              <p class="consent-option-desc">
+                Zapamiętanie Twojej decyzji dotyczącej cookies. Zawsze aktywne.
+              </p>
+            </div>
+            <label class="switch"
+              ><input type="checkbox" checked disabled /><span
+                aria-hidden="true"
+              ></span
+              ><span class="sr-only">Niezbędne – zawsze aktywne</span></label
+            >
+          </div>
+          <div class="consent-option">
+            <div>
+              <p class="consent-option-title">Analityczne</p>
+              <p class="consent-option-desc">
+                Google Analytics – anonimowe statystyki odwiedzin, które
+                pomagają ulepszać stronę.
+              </p>
+            </div>
+            <label class="switch"
+              ><input type="checkbox" data-consent-key="analytics" /><span
+                aria-hidden="true"
+              ></span
+              ><span class="sr-only">Zgoda na cookies analityczne</span></label
+            >
+          </div>
+          <div class="consent-option">
+            <div>
+              <p class="consent-option-title">Marketingowe</p>
+              <p class="consent-option-desc">
+                Pomiar skuteczności i personalizacja reklam Google (np. przy
+                promocji kampanii w sieci).
+              </p>
+            </div>
+            <label class="switch"
+              ><input type="checkbox" data-consent-key="marketing" /><span
+                aria-hidden="true"
+              ></span
+              ><span class="sr-only">Zgoda na cookies marketingowe</span></label
+            >
+          </div>
+        </div>
+
+        <div class="consent-actions">
+          <button
+            type="button"
+            class="btn btn-ghost btn-sm"
+            data-consent-action="settings"
+            aria-controls="consent-settings"
+            aria-expanded="false"
+          >
+            Ustawienia
+          </button>
+          <button
+            type="button"
+            class="btn btn-ghost btn-sm"
+            data-consent-action="save"
+            hidden
+          >
+            Zapisz wybór
+          </button>
+          <button
+            type="button"
+            class="btn btn-light btn-sm"
+            data-consent-action="reject"
+          >
+            Odrzucam
+          </button>
+          <button
+            type="button"
+            class="btn btn-light btn-sm"
+            data-consent-action="accept"
+          >
+            Akceptuję wszystkie
+          </button>
+        </div>
+      </div>
     </div>
-  </header>
 
-  <main id="main">
-
-    <!-- ===== Hero ===== -->
-    <section class="hero" aria-labelledby="hero-title">
-      <div class="hero-glow" aria-hidden="true"></div>
-      <div class="container hero-inner">
-        <h1 id="hero-title" class="hero-title">
-          <span class="hero-projekt">Projekt</span>
-          <span class="hero-code">J&nbsp;3,16</span>
-        </h1>
-        <img src="assets/img/zawijas.png" alt="" class="scribble hero-scribble" aria-hidden="true">
-        <p class="hero-tagline"><span class="red">Kod</span>, który odmieni polskie ulice</p>
-        <p class="hero-lead">4-etapowa kampania billboardowa o bezwarunkowej miłości Boga.<br>Przekaz, który nie chce niczego sprzedać – chce dać nadzieję.</p>
-        <div class="hero-actions">
-          <a href="#wesprzyj" class="btn btn-primary">Wesprzyj projekt</a>
-          <a href="#kampania" class="btn btn-ghost">Zobacz kampanię</a>
-        </div>
-      </div>
-      <a href="#kim-jestem" class="scroll-hint" aria-label="Przewiń w dół"><span></span></a>
-    </section>
-
-    <!-- ===== Kim jestem ===== -->
-    <section class="section" id="kim-jestem" aria-labelledby="kim-title">
-      <div class="container narrow">
-        <h2 class="section-title reveal" id="kim-title">Kim jestem?</h2>
-        <div class="prose reveal">
-          <p class="lead">Jestem człowiekiem, który wierzy, że najpiękniejsza nowina o Bożej miłości zasługuje na to, by wyjść z murów kościołów <span class="red">prosto na ulice naszych miast.</span></p>
-          <p>Żyjemy w świecie, w którym zewsząd krzyczą do nas reklamy: <em>„kup to”</em>, <em>„bądź lepszy”</em>, <em>„nie pasujesz”</em>. Chcę to zmienić. Chcę, aby w drodze do pracy, szkoły czy na zakupy, tysiące Polaków zatrzymało się przed przekazem, który nie chce od nich niczego kupić, ale chce im dać… <strong>nadzieję.</strong></p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== Wiadomość ===== -->
-    <section class="section section-alt" id="wiadomosc" aria-labelledby="wiad-title">
-      <div class="container narrow">
-        <h2 class="section-title reveal" id="wiad-title">Wiadomość, której potrzebuje dzisiejszy świat</h2>
-        <div class="prose reveal">
-          <p>Pamiętasz słynną akcję <strong>„Wszystko przemija, a ja wciąż trwam”</strong>, która lata temu poruszyła całą Polskę? Pokazała ona, że jako społeczeństwo głęboko potrzebujemy Słowa Bożego w przestrzeni publicznej.</p>
-          <p>Dzisiaj, po latach, w ramach Projektu J 3,16 chcę zrobić coś podobnego, ale jeszcze bardziej osobistego – <strong>4-etapową kampanię billboardową o bezwarunkowej miłości Boga.</strong> Przekaz, który nie chce niczego sprzedać, ale daje ludziom bezcenną nadzieję. Pomóż mi opłacić powierzchnie reklamowe i sprawić, by ten głos zabrzmiał na naszych ulicach!</p>
-        </div>
-      </div>
-
-      <div class="statement reveal" role="presentation">
-        <p class="statement-line">Zbuduj z nami unikalną kampanię billboardową</p>
-        <p class="statement-line red">o bezwarunkowej Miłości</p>
-        <img src="assets/img/zawijas.png" alt="" class="scribble" aria-hidden="true">
-      </div>
-    </section>
-
-    <!-- ===== Kampania ===== -->
-    <section class="section" id="kampania" aria-labelledby="kamp-title">
-      <div class="container">
-        <h2 class="section-title center reveal" id="kamp-title">O co chodzi w Projekcie J 3,16?</h2>
-        <div class="prose center-text narrow reveal">
-          <p>Zaprojektowałem unikalną, 4-etapową kampanię typu <strong>teaser</strong>. To nie będą zwykłe ogłoszenia. To intrygujący dialog, który zaczyna się od tajemnicy, a kończy na potężnym świadectwie Ewangelii.</p>
-          <p>Przez cztery kolejne tygodnie przechodnie w polskich miastach będą śledzić opowieść, która krok po kroku odsłania karty:</p>
-        </div>
-
-        <div class="campaign reveal" data-campaign>
-          <div class="campaign-tabs" role="tablist" aria-label="Etapy kampanii">
-            <button class="campaign-tab is-active" role="tab" id="tab-1" aria-controls="panel-1" aria-selected="true">
-              <span class="tab-num">01</span><span class="tab-label">Tydzień 1</span><span class="tab-sub">Tajemnica</span>
-            </button>
-            <button class="campaign-tab" role="tab" id="tab-2" aria-controls="panel-2" aria-selected="false" tabindex="-1">
-              <span class="tab-num">02</span><span class="tab-label">Tydzień 2</span><span class="tab-sub">Oczekiwanie</span>
-            </button>
-            <button class="campaign-tab" role="tab" id="tab-3" aria-controls="panel-3" aria-selected="false" tabindex="-1">
-              <span class="tab-num">03</span><span class="tab-label">Tydzień 3</span><span class="tab-sub">Miłość</span>
-            </button>
-            <button class="campaign-tab" role="tab" id="tab-4" aria-controls="panel-4" aria-selected="false" tabindex="-1">
-              <span class="tab-num">04</span><span class="tab-label">Tydzień 4</span><span class="tab-sub">Finał</span>
-            </button>
-            <div class="campaign-progress" aria-hidden="true"><span></span></div>
-          </div>
-
-          <div class="campaign-panels">
-            <article class="campaign-panel is-active" role="tabpanel" id="panel-1" aria-labelledby="tab-1">
-              <button class="campaign-image" data-lightbox="assets/img/tydzien-1.png" aria-label="Powiększ grafikę – Tydzień 1">
-                <img src="assets/img/tydzien-1.png" alt="Billboard tydzień 1: Wiem o Tobie wszystko. A Ty mnie prawie nie znasz." width="1200" height="1200" loading="lazy">
-              </button>
-              <div class="campaign-text">
-                <p class="campaign-week">Tydzień 1</p>
-                <blockquote>„Wiem o Tobie wszystko. <span class="red">A Ty mnie prawie nie znasz.</span>”</blockquote>
-                <p>Początek dialogu. Ktoś zna przechodnia lepiej niż on sam siebie – ale kto? Pierwszy krok opowieści budzi ciekawość i zatrzymuje w biegu.</p>
-              </div>
-            </article>
-
-            <article class="campaign-panel" role="tabpanel" id="panel-2" aria-labelledby="tab-2" hidden>
-              <button class="campaign-image" data-lightbox="assets/img/tydzien-2.png" aria-label="Powiększ grafikę – Tydzień 2">
-                <img src="assets/img/tydzien-2.png" alt="Billboard tydzień 2: Nawet jeśli nie przyjdziesz, ja i tak będę czekał. Otwarte drzwi, z których wpada światło." width="1200" height="1200" loading="lazy">
-              </button>
-              <div class="campaign-text">
-                <p class="campaign-week">Tydzień 2</p>
-                <blockquote>„Nawet jeśli nie przyjdziesz, <span class="red">ja i tak będę czekał.</span>”</blockquote>
-                <p>Otwarte drzwi i światło, które czeka. Druga odsłona mówi o wierności, która nie zależy od tego, czy na nią odpowiemy.</p>
-              </div>
-            </article>
-
-            <article class="campaign-panel" role="tabpanel" id="panel-3" aria-labelledby="tab-3" hidden>
-              <button class="campaign-image" data-lightbox="assets/img/tydzien-3.png" aria-label="Powiększ grafikę – Tydzień 3">
-                <img src="assets/img/tydzien-3.png" alt="Billboard tydzień 3: Miłość nie stawia warunków. Po prostu jest. Już niedługo poznasz moje imię." width="1200" height="1200" loading="lazy">
-              </button>
-              <div class="campaign-text">
-                <p class="campaign-week">Tydzień 3</p>
-                <blockquote>„Miłość nie stawia warunków. <span class="red">Po prostu jest.</span>”</blockquote>
-                <p>Ostatni krok przed odsłoną. <em>„Już niedługo poznasz moje imię”</em> – napięcie sięga zenitu.</p>
-              </div>
-            </article>
-
-            <article class="campaign-panel" role="tabpanel" id="panel-4" aria-labelledby="tab-4" hidden>
-              <button class="campaign-image" data-lightbox="assets/img/tydzien-4.png" aria-label="Powiększ grafikę – Tydzień 4">
-                <img src="assets/img/tydzien-4.png" alt="Billboard tydzień 4: Za tym wszystkim stoi Bóg. Tak bowiem Bóg umiłował świat… J 3,16" width="1200" height="1200" loading="lazy">
-              </button>
-              <div class="campaign-text">
-                <p class="campaign-week">Tydzień 4 · Finał</p>
-                <blockquote>„Za tym wszystkim stoi <span class="red">Bóg.</span>”</blockquote>
-                <p>Wielki finał i potężne Słowo z Ewangelii wg św. Jana o miłości, która daje wszystko:</p>
-                <p class="verse">„Tak bowiem Bóg umiłował świat, że Syna swego Jednorodzonego dał, aby każdy, kto w Niego wierzy, nie zginął, ale miał życie wieczne.” <cite>(J 3,16)</cite></p>
-              </div>
-            </article>
-          </div>
-
-          <div class="campaign-nav">
-            <button class="icon-btn" data-campaign-prev aria-label="Poprzedni etap">&#8592;</button>
-            <button class="icon-btn" data-campaign-next aria-label="Następny etap">&#8594;</button>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== Dlaczego wsparcie ===== -->
-    <section class="section section-alt" id="dlaczego" aria-labelledby="dl-title">
-      <div class="container narrow">
-        <h2 class="section-title reveal" id="dl-title">Dlaczego potrzebuję Twojego wsparcia?</h2>
-        <div class="prose reveal">
-          <p>Projekt J 3,16 ma jeden słaby punkt: wynajem billboardów w przestrzeni miejskiej i druk wielkoformatowy kosztują, a robię to zupełnie sam, z czystej potrzeby serca. <strong>Nie stoi za mną wielka fundacja ani korporacyjny budżet.</strong></p>
-          <p>Mam jednak głęboką wiarę, że jeśli ten przekaz poruszy Twoje serce, to wspólnie możemy dotrzeć do serc tysięcy ludzi.</p>
-          <p class="highlight">Każda Twoja wpłata to konkretne centymetry kwadratowe przestrzeni miejskiej, na której zamiast kolejnej reklamy smartfona, pojawi się <span class="red">żywe Boże Słowo.</span></p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== Na co środki ===== -->
-    <section class="section" id="srodki" aria-labelledby="sr-title">
-      <div class="container">
-        <h2 class="section-title center reveal" id="sr-title">Na co zostaną przeznaczone zebrane środki?</h2>
-        <p class="big-number reveal"><span class="red" data-count="100">100</span>%</p>
-        <p class="center-text reveal muted">zebranych funduszy trafia bezpośrednio na realizację akcji</p>
-
-        <div class="cards cards-3">
-          <article class="card reveal">
-            <div class="card-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="11" rx="1"/><path d="M8 15v6M16 15v6M5 21h14"/></svg>
-            </div>
-            <h3>Wynajem powierzchni reklamowych</h3>
-            <p>Billboardy wielkoformatowe oraz citylighty na przystankach w wybranych miastach.</p>
-          </article>
-          <article class="card reveal">
-            <div class="card-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="M6 9V3h12v6"/><rect x="2" y="9" width="20" height="8" rx="1"/><path d="M6 14h12v7H6z"/></svg>
-            </div>
-            <h3>Profesjonalny druk</h3>
-            <p>Druk wielkoformatowy materiałów na każdy z 4 etapów kampanii.</p>
-          </article>
-          <article class="card reveal">
-            <div class="card-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.5 3 14.5 0 18M12 3c-3 3.5-3 14.5 0 18"/></svg>
-            </div>
-            <h3>Rozszerzenie zasięgu</h3>
-            <p>Jeśli zbierzemy więcej – dodamy kolejne miasta oraz uruchomimy kampanię w mediach społecznościowych.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== Korzyści ===== -->
-    <section class="section section-alt" id="korzysci" aria-labelledby="ko-title">
-      <div class="container">
-        <h2 class="section-title center reveal" id="ko-title">Co zyskujesz, dołączając do Projektu J 3,16?</h2>
-        <div class="cards cards-2">
-          <article class="card card-line reveal">
-            <h3><span class="red">01</span> Pełna transparentność</h3>
-            <p>Na tej stronie będę regularnie publikować fotorelacje z miast, w których zawisną billboardy – zobaczysz realny owoc swojej wpłaty.</p>
-          </article>
-          <article class="card card-line reveal">
-            <h3><span class="red">02</span> Materiały cyfrowe</h3>
-            <p>Będziesz mógł pobrać cyfrowe wersje grafik do wykorzystania w swoich mediach społecznościowych.</p>
-          </article>
-          <article class="card card-line reveal">
-            <h3><span class="red">03</span> Lista Wspierających</h3>
-            <p>Imiona i nazwiska (lub inicjały) osób wspierających umieszczę w sekcji podziękowań na dole strony (chyba że wolisz wpłatę anonimową).</p>
-          </article>
-          <article class="card card-line reveal">
-            <h3><span class="red">04</span> Partner / Sponsor</h3>
-            <p>Jeśli reprezentujesz media, wspólnotę, parafię lub firmę – Twoje logo trafi do oficjalnej sekcji Partnerów Projektu J 3,16 na naszej stronie głównej i w materiałach prasowych.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== Wesprzyj ===== -->
-    <section class="section support" id="wesprzyj" aria-labelledby="wes-title">
-      <div class="container">
-        <h2 class="section-title center reveal" id="wes-title">Dołącz do Projektu J 3,16 – <span class="red">Wesprzyj akcję!</span></h2>
-        <p class="center-text narrow reveal lead">Każda wpłata to realny metraż przestrzeni miejskiej, z której zamiast reklam kolejnego kredytu czy smartfona, popłynie przekaz o Bożej Miłości.</p>
-
-        <!-- Koszt billboardu -->
-        <div class="cost reveal">
-          <p class="cost-intro">Pełna, 4-etapowa historia na jednym billboardzie to 4 osobne akcje plakatowania i wynajmu <strong>(po 3&nbsp;000&nbsp;zł za każdy etap)</strong>. Łączny koszt wyświetlania całej opowieści na 1 nośniku przez miesiąc wynosi:</p>
-          <div class="cost-total"><span>12&nbsp;000</span> zł</div>
-          <div class="cost-bar" aria-hidden="true">
-            <div class="cost-stage"><span>Etap 1</span><small>3 000 zł</small></div>
-            <div class="cost-stage"><span>Etap 2</span><small>3 000 zł</small></div>
-            <div class="cost-stage"><span>Etap 3</span><small>3 000 zł</small></div>
-            <div class="cost-stage"><span>Etap 4</span><small>3 000 zł</small></div>
-            <div class="cost-fill" data-cost-fill></div>
-          </div>
-          <p class="cost-caption" data-cost-caption aria-live="polite">Wybierz cegiełkę poniżej, aby zobaczyć, jaką część billboardu sfinansujesz.</p>
-        </div>
-
-        <!-- Cegiełki -->
-        <h3 class="sub-title center reveal">Dzielimy tę kwotę na mniejsze cegiełki, aby każdy mógł dołożyć swoją część:</h3>
-        <div class="tiers reveal" role="radiogroup" aria-label="Wybierz kwotę wsparcia">
-          <button class="tier" role="radio" aria-checked="false" data-amount="50">
-            <span class="tier-amount">50 zł</span>
-            <span class="tier-desc">Podstawowa cegiełka na druk materiałów wielkoformatowych.</span>
-          </button>
-          <button class="tier" role="radio" aria-checked="false" data-amount="100">
-            <span class="tier-amount">100 zł</span>
-            <span class="tier-desc">Twój wkład w druk i montaż wielkoformatowych materiałów.</span>
-          </button>
-          <button class="tier" role="radio" aria-checked="false" data-amount="750">
-            <span class="tier-amount">750 zł</span>
-            <span class="tier-desc">Finansujesz 25% kosztów 1 etapu kampanii w centrum miasta.</span>
-          </button>
-          <button class="tier tier-featured" role="radio" aria-checked="false" data-amount="3000">
-            <span class="tier-badge">Pełny etap</span>
-            <span class="tier-amount">3 000 zł</span>
-            <span class="tier-desc">Pokrywasz pełny koszt 1 ETAPU (np. Tydzień 1: Tajemnica) na jednym billboardzie.</span>
-          </button>
-          <button class="tier" role="radio" aria-checked="false" data-amount="5000">
-            <span class="tier-amount">5 000 zł</span>
-            <span class="tier-desc">Maksymalne indywidualne wsparcie od osoby prywatnej (zgodnie z kwotą wolną od podatku od darowizn) – finansujesz niemal 2 pełne etapy akcji!</span>
-          </button>
-        </div>
-
-        <!-- Firmy -->
-        <div class="company reveal">
-          <div>
-            <h3>Chcesz ufundować <span class="red">CAŁY BILLBOARD (12&nbsp;000&nbsp;zł)</span> jako Firma, Wspólnota lub Grupa?</h3>
-            <p>Jeżeli prowadzisz działalność gospodarczą, reprezentujesz firmę, wspólnotę lub chcesz wraz z grupą znajomych sfinansować pełną 4-etapową kampanię na wybranym billboardzie – skontaktuj się ze mną bezpośrednio. Przekażemy szczegóły dotyczące darowizny od firm, sponsoringu lub wpłat grupowych.</p>
-          </div>
-          <a class="btn btn-ghost" href="mailto:projektj316@gmail.com?subject=Projekt%20J%203%2C16%20%E2%80%93%20sponsoring%20%2F%20wp%C5%82ata%20grupowa">Skontaktuj się</a>
-        </div>
-
-        <!-- Płatności -->
-        <div class="pay">
-          <div class="pay-card pay-bank reveal" id="przelew">
-            <h3>Tradycyjny przelew bankowy</h3>
-            <p>Jeśli preferujesz tradycyjną bankowość internetową lub przelew na poczcie:</p>
-            <dl class="bank">
-              <div class="bank-row">
-                <dt>Nazwa odbiorcy</dt>
-                <dd><span>Projektj316</span><button class="copy-btn" data-copy="Projektj316">Kopiuj</button></dd>
-              </div>
-              <div class="bank-row">
-                <dt>Numer konta</dt>
-                <dd><span class="mono">PL 34 1140 2004 0000 3102 8673 1702</span><button class="copy-btn" data-copy="PL34114020040000310286731702">Kopiuj</button></dd>
-              </div>
-              <div class="bank-row">
-                <dt>Tytuł przelewu</dt>
-                <dd><span>Darowizna na cel: Projekt 3,16</span><button class="copy-btn" data-copy="Darowizna na cel: Projekt 3,16">Kopiuj</button></dd>
-              </div>
-              <div class="bank-row">
-                <dt>BLIK na telefon</dt>
-                <dd><span class="mono">669 363 464</span><button class="copy-btn" data-copy="669363464">Kopiuj</button></dd>
-              </div>
-            </dl>
-            <p class="small muted">Możesz też przesłać szybki BLIK na numer telefonu 669 363 464 z dopiskiem <em>Projekt J 3,16</em>.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== Cytat ===== -->
-    <section class="quote-section" aria-label="Ewangelia wg św. Jana 3,16">
-      <div class="container narrow">
-        <figure class="quote reveal">
-          <span class="quote-mark" aria-hidden="true">”</span>
-          <blockquote>
-            <p>Tak bowiem Bóg umiłował świat, że Syna swego Jednorodzonego dał, <span class="red">aby każdy, kto w Niego wierzy, nie zginął, ale miał życie wieczne.</span></p>
-          </blockquote>
-          <figcaption>– Jana 3, 16</figcaption>
-          <img src="assets/img/zawijas.png" alt="" class="scribble" aria-hidden="true">
-        </figure>
-      </div>
-    </section>
-
-    <!-- ===== Zakończenie ===== -->
-    <section class="section closing" aria-labelledby="close-title">
-      <div class="container narrow center-text">
-        <h2 class="closing-title reveal" id="close-title">Bóg nie czeka, aż będziemy idealni, by nas kochać. <span class="red">Ja nie czekam na miliony, by zacząć działać.</span></h2>
-        <p class="lead reveal">Pomóż mi zapełnić polskie ulice Jego Miłością.</p>
-        <a href="#wesprzyj" class="btn btn-primary btn-lg reveal">Zostań Darczyńcą / Partnerem / Sponsorem już dziś!</a>
-      </div>
-    </section>
-
-    <!-- ===== Partnerzy i Wspierający ===== -->
-    <section class="section section-alt" id="podziekowania" aria-labelledby="pod-title">
-      <div class="container">
-        <h2 class="section-title center reveal" id="pod-title">Podziękowania</h2>
-        <div class="thanks">
-          <div class="thanks-col reveal">
-            <h3>Partnerzy Projektu J 3,16</h3>
-            <!-- Logotypy partnerów: <li><img src="assets/img/partnerzy/nazwa.png" alt="Nazwa partnera"></li> -->
-            <ul class="partners" data-empty="Tu pojawią się logotypy partnerów i sponsorów."></ul>
-          </div>
-          <div class="thanks-col reveal">
-            <h3>Lista Wspierających</h3>
-            <!-- Wspierający: <li>Jan K.</li> -->
-            <ul class="supporters" data-empty="Tu pojawią się imiona osób wspierających. Dziękujemy!"></ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== Regulamin ===== -->
-    <section class="section" id="regulamin" aria-labelledby="reg-title">
-      <div class="container narrow">
-        <h2 class="section-title reveal" id="reg-title">Regulamin darowizn</h2>
-
-        <div class="accordion reveal">
-          <details>
-            <summary>§ 1. Postanowienia ogólne</summary>
-            <div class="accordion-body">
-              <ol>
-                <li>Niniejszy Regulamin określa zasady przyjmowania darowizn pieniężnych przekazywanych za pośrednictwem strony internetowej www.projektj316.com zwanej dalej „Stroną”.</li>
-                <li>Odbiorcą darowizn i Organizatorem akcji jest:<br>
-                  <strong>Andrzej Fornal</strong><br>
-                  zamieszkały w: ul. Rzymska 39, 03-976 Warszawa<br>
-                  E-mail: <a href="mailto:projektj316@gmail.com">projektj316@gmail.com</a><br>
-                  zwanym/ą dalej „Organizatorem”.</li>
-                <li>Wpłacający, dokonując darowizny, akceptuje postanowienia niniejszego Regulaminu.</li>
-              </ol>
-            </div>
-          </details>
-          <details>
-            <summary>§ 2. Cel darowizn</summary>
-            <div class="accordion-body">
-              <ol>
-                <li>Wszelkie wpłaty realizowane na Stronie stanowią dobrowolne darowizny pieniężne w rozumieniu art. 888 § 1 Kodeksu Cywilnego.</li>
-                <li>Pozyskane środki przeznaczone zostaną w całości na realizację społeczno-ewangelizacyjnego projektu pt. „Projekt J 3,16”, w tym w szczególności na:
-                  <ul>
-                    <li>wynajem powierzchni reklamowych (billboardy, citylighty),</li>
-                    <li>druk wielkoformatowy materiałów graficznych,</li>
-                    <li>promowanie kampanii w mediach i przestrzeni cyfrowej.</li>
-                  </ul>
-                </li>
-              </ol>
-            </div>
-          </details>
-          <details>
-            <summary>§ 3. Zasady składania darowizn</summary>
-            <div class="accordion-body">
-              <ol>
-                <li>Darowiznę może przekazać każda osoba fizyczna posiadająca pełną zdolność do czynności prawnych, osoba prawna lub jednostka organizacyjna (zwana dalej „Darczyńcą”).</li>
-                <li>Wpłaty można dokonywać za pośrednictwem operatora płatności internetowych, bezpośredniego przelewu na bankowy rachunek odbiorcy lub płatności mobilnej BLIK.</li>
-                <li>Darczyńca sam wybiera kwotę darowizny.</li>
-                <li>Przekazanie darowizny nie wiąże się ze świadczeniem wzajemnym ze strony Organizatora na rzecz Darczyńcy (jest to świadczenie nieodpłatne).</li>
-              </ol>
-            </div>
-          </details>
-          <details>
-            <summary>§ 4. Anulowanie wpłaty i zwroty</summary>
-            <div class="accordion-body">
-              <ol>
-                <li>Ze względu na charakter darowizny (świadczenie nieodpłatne), wpłacone środki nie podlegają zwrotowi, z wyjątkiem sytuacji przewidzianych przepisami prawa lub pomyłek technicznych.</li>
-                <li>W przypadku pomyłki technicznej Darczyńca powinien niezwłocznie skontaktować się z Organizatorem pod adresem e-mail: <a href="mailto:projektj316@gmail.com">projektj316@gmail.com</a></li>
-              </ol>
-            </div>
-          </details>
-          <details>
-            <summary>§ 5. Ochrona danych osobowych (RODO)</summary>
-            <div class="accordion-body">
-              <ol>
-                <li>Administratorem danych osobowych Darczyńców jest Organizator.</li>
-                <li>Dane osobowe (imię, nazwisko, adres e-mail, kwota wpłaty) przetwarzane są wyłącznie w celu realizacji i zaksięgowania darowizny, kontaktu z Darczyńcą oraz publikacji na liście wspierających (wyłącznie za uprzednią, dobrowolną zgodą Darczyńcy).</li>
-                <li>Darczyńca ma prawo wglądu do swoich danych, ich poprawiania oraz żądania ich usunięcia.</li>
-                <li>Darczyńca może dokonać wpłaty w sposób w pełni anonimowy.</li>
-              </ol>
-            </div>
-          </details>
-          <details>
-            <summary>§ 6. Postanowienia końcowe</summary>
-            <div class="accordion-body">
-              <ol>
-                <li>W sprawach nieuregulowanych niniejszym Regulaminem stosuje się przepisy Kodeksu Cywilnego.</li>
-                <li>Regulamin wchodzi w życie z dniem opublikowania na Stronie.</li>
-              </ol>
-            </div>
-          </details>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- ===== Stopka ===== -->
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <img src="assets/img/logo-wide.png" alt="Projekt J 3,16" class="footer-logo" width="850" height="300" loading="lazy">
-      <div class="footer-info">
-        <p><a href="mailto:projektj316@gmail.com">projektj316@gmail.com</a></p>
-        <p class="muted">www.projektj316.com</p>
-      </div>
-      <nav class="footer-nav" aria-label="Stopka">
-        <a href="#wesprzyj">Wesprzyj</a>
-        <a href="#regulamin">Regulamin darowizn</a>
-        <button type="button" class="link-btn" data-consent-open>Ustawienia cookies</button>
-        <a href="#top">Do góry ↑</a>
-      </nav>
-    </div>
-    <p class="copyright container">© <span data-year></span> Projekt J 3,16</p>
-  </footer>
-
-  <!-- Lightbox -->
-  <dialog class="lightbox" aria-label="Podgląd grafiki">
-    <button class="lightbox-close" aria-label="Zamknij">&times;</button>
-    <img src="" alt="">
-  </dialog>
-
-  <!-- Toast -->
-  <div class="toast" role="status" aria-live="polite"></div>
-
-  <!-- Baner zgód (Consent Mode v2) -->
-  <div class="consent" role="dialog" aria-labelledby="consent-title" aria-describedby="consent-desc" hidden>
-    <div class="consent-inner">
-      <h2 class="consent-title" id="consent-title">Szanujemy Twoją prywatność</h2>
-      <p class="consent-desc" id="consent-desc">Używamy plików cookies i podobnych technologii. Niezbędne zapewniają działanie strony. Za Twoją zgodą użyjemy też narzędzi analitycznych Google Analytics, żeby zobaczyć, ile osób odwiedza stronę i co je interesuje. Zgodę możesz w każdej chwili zmienić w stopce strony („Ustawienia cookies”).</p>
-
-      <div class="consent-settings" id="consent-settings" hidden>
-        <div class="consent-option">
-          <div>
-            <p class="consent-option-title">Niezbędne</p>
-            <p class="consent-option-desc">Zapamiętanie Twojej decyzji dotyczącej cookies. Zawsze aktywne.</p>
-          </div>
-          <label class="switch"><input type="checkbox" checked disabled><span aria-hidden="true"></span><span class="sr-only">Niezbędne – zawsze aktywne</span></label>
-        </div>
-        <div class="consent-option">
-          <div>
-            <p class="consent-option-title">Analityczne</p>
-            <p class="consent-option-desc">Google Analytics – anonimowe statystyki odwiedzin, które pomagają ulepszać stronę.</p>
-          </div>
-          <label class="switch"><input type="checkbox" data-consent-key="analytics"><span aria-hidden="true"></span><span class="sr-only">Zgoda na cookies analityczne</span></label>
-        </div>
-        <div class="consent-option">
-          <div>
-            <p class="consent-option-title">Marketingowe</p>
-            <p class="consent-option-desc">Pomiar skuteczności i personalizacja reklam Google (np. przy promocji kampanii w sieci).</p>
-          </div>
-          <label class="switch"><input type="checkbox" data-consent-key="marketing"><span aria-hidden="true"></span><span class="sr-only">Zgoda na cookies marketingowe</span></label>
-        </div>
-      </div>
-
-      <div class="consent-actions">
-        <button type="button" class="btn btn-ghost btn-sm" data-consent-action="settings" aria-controls="consent-settings" aria-expanded="false">Ustawienia</button>
-        <button type="button" class="btn btn-ghost btn-sm" data-consent-action="save" hidden>Zapisz wybór</button>
-        <button type="button" class="btn btn-light btn-sm" data-consent-action="reject">Odrzucam</button>
-        <button type="button" class="btn btn-light btn-sm" data-consent-action="accept">Akceptuję wszystkie</button>
-      </div>
-    </div>
-  </div>
-
-  <script src="js/consent.js" defer></script>
-  <script src="js/main.js" defer></script>
-</body>
+    <script src="js/consent.js" defer></script>
+    <script src="js/main.js" defer></script>
+  </body>
 </html>
