@@ -5,14 +5,17 @@
      Konfiguracja
      ========================================================== */
 
-  var BILLBOARD_COST = 12000;
-  var STAGE_COST = 3000;
+  // pełna kampania = 4 etapy na jednym citylighcie
+  var CAMPAIGN_COST = 4000;
+  var STAGES = 4;
+  var STAGE_COST = CAMPAIGN_COST / STAGES;
 
   var $ = function (sel, ctx) { return (ctx || document).querySelector(sel); };
   var $$ = function (sel, ctx) { return Array.prototype.slice.call((ctx || document).querySelectorAll(sel)); };
 
+  // spacja co 3 cyfry także dla kwot 4-cyfrowych (pl-PL ich nie grupuje), zgodnie z kartami cegiełek
   var formatPLN = function (n) {
-    return n.toLocaleString('pl-PL', { maximumFractionDigits: 0 }).replace(/ /g, ' ') + ' zł';
+    return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, '\u00a0') + '\u00a0zł';
   };
 
   /* ---------- Google Analytics – zdarzenia ---------- */
@@ -207,19 +210,34 @@
   var costCaption = $('[data-cost-caption]');
   var selectedAmount = null;
 
+  // 1 etap, 2–4 etapy, 5+ etapów, 1,5 etapu
+  function stagesLabel(n) {
+    if (!Number.isInteger(n)) return n.toLocaleString('pl-PL', { maximumFractionDigits: 2 }) + ' etapu';
+    if (n === 1) return '1 etap';
+    var mod10 = n % 10, mod100 = n % 100;
+    var plural = mod10 >= 2 && mod10 <= 4 && (mod100 < 12 || mod100 > 14);
+    return n + (plural ? ' etapy' : ' etapów');
+  }
+
   function describe(amount) {
-    var pct = amount / BILLBOARD_COST * 100;
+    var lead = 'Twoja cegiełka <strong>' + formatPLN(amount) + '</strong> ';
     var stages = amount / STAGE_COST;
-    var pctText = pct < 1 ? pct.toLocaleString('pl-PL', { maximumFractionDigits: 1 }) : Math.round(pct);
-    var stagesText;
-    if (stages >= 1) {
-      stagesText = stages.toLocaleString('pl-PL', { maximumFractionDigits: 2 }) + ' etapu kampanii';
-      if (Number.isInteger(stages)) stagesText = stages === 1 ? 'pełny 1 etap kampanii' : stages + ' pełne etapy kampanii';
-    } else {
-      stagesText = Math.round(stages * 100) + '% jednego etapu';
+
+    if (amount >= CAMPAIGN_COST) {
+      var campaigns = Math.floor(amount / CAMPAIGN_COST);
+      var rest = (amount - campaigns * CAMPAIGN_COST) / STAGE_COST;
+      var text = campaigns === 1
+        ? '<strong>pełną kampanię</strong> – wszystkie ' + STAGES + ' etapy na jednym citylighcie'
+        : '<strong>' + campaigns + ' pełne kampanie</strong> na ' + campaigns + ' citylightach';
+      if (rest > 0) text += ' i ' + stagesLabel(rest) + ' na kolejnym';
+      return lead + 'pokrywa ' + text + '.';
     }
-    return 'Twoja cegiełka <strong>' + formatPLN(amount) + '</strong> to <strong>' + pctText +
-      '%</strong> całego billboardu – ' + stagesText + '.';
+
+    var pct = (amount / CAMPAIGN_COST * 100).toLocaleString('pl-PL', { maximumFractionDigits: 1 });
+    var detail = stages >= 1
+      ? stagesLabel(stages) + ' z ' + STAGES
+      : Math.round(stages * 100) + '% jednego etapu';
+    return lead + 'to <strong>' + pct + '%</strong> pełnej kampanii na jednym citylighcie – ' + detail + '.';
   }
 
   function selectTier(tier) {
@@ -230,7 +248,7 @@
     });
     selectedAmount = parseInt(tier.getAttribute('data-amount'), 10);
     // minimalna widoczna szerokość, żeby małe kwoty też było widać
-    var width = Math.max(selectedAmount / BILLBOARD_COST * 100, 1.2);
+    var width = Math.min(Math.max(selectedAmount / CAMPAIGN_COST * 100, 1.2), 100);
     costFill.style.width = width + '%';
     costCaption.innerHTML = describe(selectedAmount);
   }
