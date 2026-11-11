@@ -311,6 +311,11 @@
     });
   });
 
+  /* ---------- Materiały do promocji (Google Drive) ---------- */
+  $$('[data-promote]').forEach(function (a) {
+    a.addEventListener('click', function () { track('promote_click'); });
+  });
+
   /* ---------- Rok w stopce ---------- */
   var year = $('[data-year]');
   if (year) year.textContent = new Date().getFullYear();

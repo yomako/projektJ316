@@ -199,6 +199,7 @@ p { margin: 0 0 1.1em; }
 .nav a.is-current { color: var(--white); }
 .nav a:not(.btn):hover::after,
 .nav a.is-current::after { transform: scaleX(1); }
+.nav-cta { display: flex; gap: 10px; }
 
 .nav-toggle {
   display: none;
